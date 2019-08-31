@@ -49,38 +49,3 @@
               %i.fa.fa-image
               %input#message_image.input-box__image__file{:name => "message[image]", :type => "file"}
           %input.submit-btn{:type => "submit", :value => "Send"}
-
-
-
-    -# .chat-main
-    -#   .main-header
-    -#     .main-header__left-box
-    -#       %h2.main-header__left-box__current-group
-    -#         Sample
-    -#       %ul.main-header__left-box__member-list
-    -#         Member：
-    -#         %li.main-header__left-box__member-list__member seo
-    -#         %li.main-header__left-box__member-list__member neko
-    -#     =link_to "" do
-    -#       .main-header__edit-btn Edit
-    -#   .messages
-    -#     .message
-    -#       .message__upper-info
-    -#         %p.message__upper-info__talker seo
-    -#         %p.message__upper-info__date 2016/09/21 06:16:55
-    -#       %p.message__text Hello world!
-    -#     .message
-    -#       .message__upper-info
-    -#         %p.message__upper-info__talker neko
-    -#         %p.message__upper-info__date 2016/09/22 06:16:55
-    -#       %p.message__text Good bye world!
-    -#   .form
-        -# %form#new_message.new_message{"accept-charset" => "UTF-8", :action => "/groups/402/messages", :enctype => "multipart/form-data", :method => "post"}
-        -#   %input{:name => "utf8", :type => "hidden", :value => "✓"}/
-        -#   %input{:name => "authenticity_token", :type => "hidden", :value => "38i1RqvRq4+tf6xkIQOi+QCkqgr70KFQJ8hEoYsalmtwCeM34KDixxjAp/V9OWr8WhdmTRfiPzXloH7FN1yuZg=="}/
-        -#   .input-box
-        -#     %input#message_content.input-box__text{:name => "message[content]", :placeholder => "type a message", :type => "text"}/
-            -# %label.input-box__image{:for => "message_image"}
-            -#   %i.fa.fa-image
-            -#   %input#message_image.input-box__image__file{:name => "message[image]", :type => "file"}/
-          -# %input.submit-btn{"data-disable-with" => "Send", :name => "commit", :type => "submit", :value => "Send"}/
