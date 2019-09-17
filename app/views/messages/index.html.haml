@@ -1,44 +1,26 @@
-.side-bar
+.wrapper
   = render 'shared/side_bar'
--# .chat-side
--#   .side-header
--#     .side-header__box
--#       %p.side-header__box__user-name seo
--#       %ul.side-header__box__menu
--#         %li.side-header__box__menu__new-group
--#           = link_to new_group_path do
--#             = fa_icon 'edit'
--#         %li.side-header__box__menu__edit-user
--#           = link_to "" do
--#             = fa_icon 'cog'
--#   .groups
--#     .group
--#       %p.group__group-name Sample
--#       %p.group__latest-message Good bye world!
--#     .group
--#       %p.group__group-name Sample2
--#       %p.group__latest-message Good bye world again!
 
-.chat-main
-  .main-header
-    .main-header__left-box
-      %p.main-header__left-box__current-group
-        = @group.name
-      %ul.main-header__left-box__member-list
-        Member：
-        - @group.users.each do |user|
-          %li.main-header__left-box__member-list__member
-            = user.name
-    .main-header__edit-btn
-      = link_to edit_group_path(@group)
-  .messages
-    = render @messages
-  .form
-    %form
-    = form_for [@group, @message] do |f|
-      = f.text_field :content, class: 'input-box', placeholder: 'type a message'
-      .form__mask
-        = f.label :image, class: 'input-box__text' do
-          = fa_icon 'picture-o', class: 'input-box__image'
-          = f.file_field :image, class: 'input-box__image__file'
-      = f.submit 'Send', class: 'submit-btn'
+  .chat
+    .header
+      .left-header
+        %p.left-header__title
+          = @group.name
+        %ul.left-header__members
+          Member：
+          - @group.users.each do |user|
+            %li.member
+              = user.name
+      .right-header
+        = link_to edit_group_path(@group)
+    .messages
+      = render @messages
+    .form
+      %form
+      = form_for [@group, @message] do |f|
+        = f.text_field :content, class: 'form__message', placeholder: 'type a message'
+        .form__mask
+          = f.label :image, class: 'form__mask' do
+            = fa_icon 'picture-o', class: 'form__mask__image'
+            = f.file_field :image, class: 'hidden'
+        = f.submit 'Send', class: 'form__submit'
