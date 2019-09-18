@@ -55,8 +55,9 @@ $(function() {
       $('.messages').append(buildHTML(data));
       $('.form__message').val('');
       $('.form__submit').attr('disabled', false);
-      console.log($('.message:last').position().top);
-      $('.messages').delay(10).animate({ scrollTop: $('.message:last').position().top }, 1500);
+      $('.messages').delay(10).animate({
+        scrollTop: $('.message:last').position().top - $('.message:first').position().top
+      }, 1500);
     })
     .fail(function(data) {
       alert("失敗しました");
