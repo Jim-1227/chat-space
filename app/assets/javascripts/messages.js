@@ -51,16 +51,17 @@ $(function() {
       contentType: false
     })
     .done(function(data) {
-      // $('.messages').append(buildHTML(data));
       $('.messages').append(buildHTML(data));
-      $('.form__message').val('');
-      $('.form__submit').attr('disabled', false);
       $('.messages').delay(10).animate({
         scrollTop: $('.message:last').position().top - $('.message:first').position().top
       }, 1500);
+      $('.form__message').val('');
+      $('.hidden').val('');
+      $('.form__submit').attr('disabled', false);
     })
     .fail(function(data) {
       alert("失敗しました");
+      location.reload();
     })
   })
 })
