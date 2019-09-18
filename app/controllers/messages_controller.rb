@@ -8,11 +8,20 @@ class MessagesController < ApplicationController
 
   def create
     @message = @group.messages.new(message_params)
+
+    if (@message.content == "") && (@message.image.file == nil)
+      @messages = @group.messages.includes(:user)
+      flash.now[:alert] = 'メッセージを入力してください'
+      render :index
+    end
+
     @message.save
+    
     respond_to do |format|
       format.html
       format.json
     end
+
   end
 
   private
