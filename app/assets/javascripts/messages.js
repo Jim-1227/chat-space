@@ -1,41 +1,24 @@
 $(function() {
   function buildHTML(data) {
-    if (data.image) {
-      var html = `<div class="message">
-                    <div class="upper-message">
-                      <div class="upper-message__user-name">
-                        ${data.name}
-                      </div>
-                      <div class="upper-message__date">
-                        ${data.created_at}
-                      </div>
+    var image_html = `<img class="lower-message__image" src="${data.image}" alt="${data.name}">`;
+    image_html = (data.image == null) ? "" : image_html;
+    var html = `<div class="message">
+                  <div class="upper-message">
+                    <div class="upper-message__user-name">
+                      ${data.name}
                     </div>
-                    <div class="lower-message">
-                      <p class="lower-message___content">
-                        ${data.content}
-                      </p>
-                      <img class="lower-message__image" src="${data.image}" alt="${data.name}">
+                    <div class="upper-message__date">
+                      ${data.created_at}
                     </div>
-                  </div>`
-      return html;
-    } else {
-      var html = `<div class="message">
-                    <div class="upper-message">
-                      <div class="upper-message__user-name">
-                        ${data.name}
-                      </div>
-                      <div class="upper-message__date">
-                        ${data.created_at}
-                      </div>
-                    </div>
-                    <div class="lower-message">
-                      <p class="lower-message___content">
-                        ${data.content}
-                      </p>
-                    </div>
-                  </div>`
-      return html;
-    };
+                  </div>
+                  <div class="lower-message">
+                    <p class="lower-message___content">
+                      ${data.content}
+                    </p>`
+                    + image_html +
+                 `</div>
+                </div>`;
+    return html;
   }
 
   $('.new_message').on('submit', function(e) {
