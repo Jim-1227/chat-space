@@ -38,8 +38,7 @@ $(function() {
       $('.messages').delay(10).animate({
         scrollTop: $('.message:last').position().top - $('.message:first').position().top
       }, 1500);
-      $('.form__message').val('');
-      $('.hidden').val('');
+      $('.new_message')[0].reset();
       $('.form__submit').attr('disabled', false);
     })
     .fail(function(data) {
