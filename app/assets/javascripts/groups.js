@@ -10,6 +10,7 @@ $(function() {
   }
 
 
+
   $('.chat-user-add').on('keyup keypress', function() {
     var input = $(".chat-user-add").val();
     $.ajax({
@@ -32,4 +33,21 @@ $(function() {
       alert('ユーザー検索に失敗しました');
     })
   })
+
+  $(document).on('click', '.chat-group-user__btn--add', function() {
+    console.log($(this).attr('data-user-name'));
+    var selected_user_id = $(this).attr('data-user-id')
+    var selected_user_name = $(this).attr('data-user-name')
+    
+    $(this).parent().remove();
+    
+    var html = `<div class='chat-group-user'>
+                  <input name='group[user_ids][]' type='hidden' value='${ selected_user_id }'>
+                  <p class='chat-group-user__name'>${ selected_user_name }</p>
+                  <div class='user-search-remove chat-group-user__btn chat-group-user__btn--remove js-remove-btn'>削除</div>
+                </div>`
+    $('#group-user-list').append(html)
+  })
+
+  
 })

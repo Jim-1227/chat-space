@@ -23,13 +23,13 @@
     .chat-group-form__field--left
       = f.label "チャットメンバー", class: "chat-group-form__label"
     .chat-group-form__field--right
-      - group.users.each do |user|
-
-        .chat-group-user.clearfix
-          %p.chat-group-user__name
-            = user.name
-          .user-search-add.chat-group-user__btn.chat-group-user__btn--remove
-            削除
+      #group-user-list
+        - group.users.each do |user|
+          .chat-group-user.clearfix
+            %p.chat-group-user__name
+              = user.name
+            .user-search-add.chat-group-user__btn.chat-group-user__btn--remove
+              削除
 
           
       / この部分はインクリメンタルサーチ(ユーザー追加の非同期化)のときにも使用します
