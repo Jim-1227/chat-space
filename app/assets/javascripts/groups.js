@@ -9,8 +9,6 @@ $(function() {
     return html;
   }
 
-
-
   $('.chat-user-add').on('keyup keypress', function() {
     var input = $(".chat-user-add").val();
     $.ajax({
@@ -51,4 +49,5 @@ $(function() {
   $(document).on('click', '.chat-group-user__btn--remove', function() {
     $(this).parent().remove();
   })
+
 })
