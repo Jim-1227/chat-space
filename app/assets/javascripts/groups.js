@@ -35,9 +35,8 @@ $(function() {
   })
 
   $(document).on('click', '.chat-group-user__btn--add', function() {
-    console.log($(this).attr('data-user-name'));
-    var selected_user_id = $(this).attr('data-user-id')
-    var selected_user_name = $(this).attr('data-user-name')
+    var selected_user_id = $(this).attr('data-user-id');
+    var selected_user_name = $(this).attr('data-user-name');
     
     $(this).parent().remove();
     
@@ -45,9 +44,11 @@ $(function() {
                   <input name='group[user_ids][]' type='hidden' value='${ selected_user_id }'>
                   <p class='chat-group-user__name'>${ selected_user_name }</p>
                   <div class='user-search-remove chat-group-user__btn chat-group-user__btn--remove js-remove-btn'>削除</div>
-                </div>`
-    $('#group-user-list').append(html)
+                </div>`;
+    $('#group-user-list').append(html);
   })
 
-  
+  $(document).on('click', '.chat-group-user__btn--remove', function() {
+    $(this).parent().remove();
+  })
 })
