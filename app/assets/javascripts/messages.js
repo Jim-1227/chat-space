@@ -34,7 +34,10 @@ $(function() {
       $.each(messages, function(i, message) {
         insertHTML = insertHTML + buildHTML(message);
       });
-      $('messages').append(insertHTML);
+      $('.messages').append(insertHTML);
+      $('.messages').delay(10).animate({
+        scrollTop: $('.message:last').position().top - $('.message:first').position().top
+      }, 1500);
       console.log('success');
     })
     .fail(function() {
