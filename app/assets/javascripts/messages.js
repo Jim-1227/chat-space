@@ -38,24 +38,19 @@ $(document).on('turbolinks:load', function() {
       $('.messages').delay(10).animate({
         scrollTop: $('.message:last').position().top - $('.message:first').position().top + 50
       }, 1500);
-      console.log('success');
     })
     .fail(function() {
-      console.log('error');
     })
   }
 
-  //$(window).on('load', function() {
-    if(location.pathname.match(/groups\/\d*\/messages/)) {
-      setInterval(reloadMessages, 5000);
-    }
- // })
+  if(location.pathname.match(/groups\/\d*\/messages/)) {
+    setInterval(reloadMessages, 5000);
+  }
 
   $('.new_message').on('submit', function(e) {
     e.preventDefault();
     var formData = new FormData(this);
     var url = location.pathname;
-    console.log("ok");
     $.ajax({
       type: 'POST',
       url: url,
@@ -65,7 +60,6 @@ $(document).on('turbolinks:load', function() {
       contentType: false
     })
     .done(function(data) {
-      console.log(data);
       $('.messages').append(buildHTML(data));
       $('.messages').delay(10).animate({
         scrollTop: $('.message:last').position().top - $('.message:first').position().top + 50
