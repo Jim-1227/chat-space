@@ -2,7 +2,7 @@ $(function() {
   function buildHTML(data) {
     var image_html = `<img class="lower-message__image" src="${data.image}" alt="${data.user_name}">`;
     image_html = (data.image == null) ? "" : image_html;
-    var html = `<div class="message">
+    var html = `<div class="message" data-id="${data.id}">
                   <div class="upper-message">
                     <div class="upper-message__user-name">
                       ${data.user_name}
@@ -30,6 +30,11 @@ $(function() {
       data: { id: last_message_id }
     })
     .done(function(messages) {
+      var insertHTML = '';
+      $.each(messages, function(i, message) {
+        insertHTML = insertHTML + buildHTML(message);
+      });
+      $('messages').append(insertHTML);
       console.log('success');
     })
     .fail(function() {
@@ -63,4 +68,5 @@ $(function() {
       location.reload();
     })
   })
+  setInterval(reloadMessages, 5000);
 })
