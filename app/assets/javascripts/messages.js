@@ -71,5 +71,10 @@ $(function() {
       location.reload();
     })
   })
-  setInterval(reloadMessages, 5000);
+
+  $(window).on('load', function() {
+    if(location.pathname.match(/groups\/\d*\/messages/)) {
+      setInterval(reloadMessages, 5000);
+    }
+  })
 })
