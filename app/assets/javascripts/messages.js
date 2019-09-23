@@ -1,4 +1,4 @@
-$(function() {
+$(document).on('turbolinks:load', function() {
   function buildHTML(data) {
     var image_html = `<img class="lower-message__image" src="${data.image}" alt="${data.user_name}">`;
     image_html = (data.image == null) ? "" : image_html;
@@ -24,7 +24,7 @@ $(function() {
   var reloadMessages = function() {
     last_message_id = $('.message:last').data('id');
     $.ajax({
-      url: location.pathname + 'api/messages',
+      url: 'api/messages',
       type: 'get',
       dataType: 'json',
       data: { id: last_message_id }
@@ -36,7 +36,7 @@ $(function() {
       });
       $('.messages').append(insertHTML);
       $('.messages').delay(10).animate({
-        scrollTop: $('.message:last').position().top - $('.message:first').position().top
+        scrollTop: $('.message:last').position().top - $('.message:first').position().top + 50
       }, 1500);
       console.log('success');
     })
@@ -45,11 +45,17 @@ $(function() {
     })
   }
 
+  //$(window).on('load', function() {
+    if(location.pathname.match(/groups\/\d*\/messages/)) {
+      setInterval(reloadMessages, 5000);
+    }
+ // })
 
   $('.new_message').on('submit', function(e) {
     e.preventDefault();
     var formData = new FormData(this);
     var url = location.pathname;
+    console.log("ok");
     $.ajax({
       type: 'POST',
       url: url,
@@ -59,9 +65,10 @@ $(function() {
       contentType: false
     })
     .done(function(data) {
+      console.log(data);
       $('.messages').append(buildHTML(data));
       $('.messages').delay(10).animate({
-        scrollTop: $('.message:last').position().top - $('.message:first').position().top
+        scrollTop: $('.message:last').position().top - $('.message:first').position().top + 50
       }, 1500);
       $('.new_message')[0].reset();
       $('.form__submit').attr('disabled', false);
@@ -72,9 +79,4 @@ $(function() {
     })
   })
 
-  $(window).on('load', function() {
-    if(location.pathname.match(/groups\/\d*\/messages/)) {
-      setInterval(reloadMessages, 5000);
-    }
-  })
 })
