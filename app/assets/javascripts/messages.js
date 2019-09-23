@@ -1,11 +1,11 @@
 $(function() {
   function buildHTML(data) {
-    var image_html = `<img class="lower-message__image" src="${data.image}" alt="${data.name}">`;
+    var image_html = `<img class="lower-message__image" src="${data.image}" alt="${data.user_name}">`;
     image_html = (data.image == null) ? "" : image_html;
     var html = `<div class="message">
                   <div class="upper-message">
                     <div class="upper-message__user-name">
-                      ${data.name}
+                      ${data.user_name}
                     </div>
                     <div class="upper-message__date">
                       ${data.created_at}
