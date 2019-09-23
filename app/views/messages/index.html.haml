@@ -12,7 +12,8 @@
             %li.member
               = user.name
       .right-header
-        = link_to edit_group_path(@group)
+        = link_to edit_group_path(@group) do
+          EDIT
     .messages
       = render @messages
     .form
