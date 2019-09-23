@@ -21,6 +21,23 @@ $(function() {
     return html;
   }
 
+  var reloadMessages = function() {
+    last_message_id = $('.message:last').data('id');
+    $.ajax({
+      url: location.pathname + 'api/messages',
+      type: 'get',
+      dataType: 'json',
+      data: { id: last_message_id }
+    })
+    .done(function(messages) {
+      console.log('success');
+    })
+    .fail(function() {
+      console.log('error');
+    })
+  }
+
+
   $('.new_message').on('submit', function(e) {
     e.preventDefault();
     var formData = new FormData(this);
