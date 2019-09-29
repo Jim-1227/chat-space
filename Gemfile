@@ -68,6 +68,7 @@ gem "font-awesome-rails"
 gem 'carrierwave'
 gem 'mini_magick'
 gem "devise", ">= 4.7.1"
+gem 'fog-aws'
 
 group :production do
   gem 'unicorn', '5.4.1'
