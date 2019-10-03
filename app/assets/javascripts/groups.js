@@ -32,6 +32,15 @@ $(document).on('turbolinks:load', function() {
     })
   })
 
+
+  $(document).on('click', '.chat-group-user__btn--remove', function() {
+    $(this).parent().remove();
+  })
+
+})
+
+$(function() {
+
   $(document).on('click', '.chat-group-user__btn--add', function() {
     var selected_user_id = $(this).attr('data-user-id');
     var selected_user_name = $(this).attr('data-user-name');
@@ -46,8 +55,5 @@ $(document).on('turbolinks:load', function() {
     $('#group-user-list').append(html);
   })
 
-  $(document).on('click', '.chat-group-user__btn--remove', function() {
-    $(this).parent().remove();
-  })
 
 })
